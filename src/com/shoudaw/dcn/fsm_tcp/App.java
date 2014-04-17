@@ -42,13 +42,13 @@ public class App {
 		fsm.addTransition(transitions.fin_wait_1_to_closing);
 		fsm.addTransition(transitions.closing_to_time_wait);
 		
-
+		String prompt = "EVENT for next state -->";
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		System.out.println("please input the EVENT for next state: ");		
+		System.out.println(prompt);		
 		String input = reader.readLine();
 		
 
-		while (!input.equals("END")){
+		while (!input.equals("END") && !input.equals("EOF")){
 			
 			Event event = events.get(input);
 			if (event != null){
@@ -63,7 +63,7 @@ public class App {
 				System.err.println("Error: unexpected Event:" + input);
 			}
 			
-			System.out.println("please input the EVENT for next state: ");	
+			System.out.println(prompt);		
 			input = reader.readLine();
 		}
 		
